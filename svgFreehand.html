@@ -1,0 +1,26 @@
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>...move to...</title>
+  <!-- this line removes any default padding and style. you might only need one of these values set. -->
+  <style> body {padding: 0; margin: 0;} </style>
+</head>
+
+
+<body>
+
+<svg width="300" height="300" id="svgPort"
+  xmlns="http://www.w3.org/2000/svg"
+  xmlns:xlink="http://www.w3.org/1999/xlink">
+
+  <!-- This is the element before translation and rotation are applied -->
+  <rect x="50" y="50" height="100" width="100" style="stroke:#000; fill: #0086B2" fill-opacity=0.2 stroke-opacity=0.2></rect>
+
+  <!-- Now we add a text element and apply rotate and translate to both -->
+  <rect x="50" y="50" height="100" width="100" style="stroke:#000; fill: #0086B2" transform="translate(30) rotate(45 50 50)"></rect>
+  <polyline id ='currentDrawing' points='0,300 300,300' style='stroke:black; stroke-width:1; fill: none' />
+
+</svg>
+    <script language="javascript" type="text/javascript" src="js/svgFree.js"></script>
+</body>
+</html>
