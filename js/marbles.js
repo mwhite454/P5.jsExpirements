@@ -4,16 +4,13 @@ var frictionVal = -0.03,
     score = 0,
     ball,
     ballCount = 10,
-    balls = [];
+    balls = [],
+    wins = 0;
 
 function setup() {
   createCanvas(600, 600);
   game = new GameArea();
-  ball = new Ball(true);
-  for(var i = 0; i<ballCount; i++){
-    balls[i] = new Ball();
-  }
-
+  game.newGame();
 }
 
 function draw() {
@@ -42,11 +39,34 @@ function draw() {
     balls[i].show();
   }
   game.assessSelf();
+  if(turns>0){
+    push();
+      var r = dist(ball.pos.x, ball.pos.y, mouseX, mouseY);
+      r = (r/width) * 255;
+      var gb = 255 - r;
+      strokeWeight(2);
+      stroke(r, gb, gb);
+      line(ball.pos.x, ball.pos.y, mouseX, mouseY);
+    pop();
+  }
+
+  if(game.showPrompt){
+    push();
+    stroke(0, 200, 0);
+    fill(65);
+    rect(game.pos.x - 100, game.pos.y -100, 300, 300);
+    noStroke();
+    fill(0, 200, 0);
+    text(game.msg, game.pos.x -50, game.pos.y - 50);
+    pop();
+  }
+
   push();
   noStroke();
   fill(0, 200, 0);
-  text("Score: " + score, 10, height-30);
-  text("Turns: " + turns, 10, height-10);
+  text("Score: " + score, 10, height-50);
+  text("Turns: " + turns, 10, height-30);
+  text("Wins: " + wins, 10, height-10);
   pop();
 }
 
@@ -59,9 +79,14 @@ function keyPressed() {
     ball.force.set(-3, 0);
   } else  if (keyCode === RIGHT_ARROW) {
     ball.force.set(3, 0);
+  } else if (32 && (turns < 1 || score > 9)) {
+    game.newGame();
+    game.showPrompt = false;
   }
   //console.log(ball.force);
 }
+
+
 
 function mouseClicked(){
   if(turns>0){
@@ -75,6 +100,9 @@ function mouseClicked(){
 function GameArea(){
   this.pos = createVector(width/2, height/3);
   this.radius = 160;
+  this.showPrompt = false;
+  this.gameOver = false;
+  this.msg;
   this.show = function(){
     push();
     noFill();
@@ -82,6 +110,7 @@ function GameArea(){
     stroke(150, 0, 0);
     ellipse(this.pos.x, this.pos.y, this.radius*2, this.radius*2);
     pop();
+
   };
   this.assessSelf = function(){
     var potentialScore = ballCount;
@@ -92,7 +121,36 @@ function GameArea(){
       }
     }
     score = potentialScore;
+    if(score===10){
+      if(!this.gameOver){
+        wins += 1;
+        this.gameOver = true;
+      }
+      game.promp(1);
+    }
+    if(turns<1){
+      game.promp(0);
+    }
     //console.log(score);
+  };
+  this.newGame = function(){
+    //reset turn count
+    turns = 7;
+    //new player ball
+    ball = new Ball(true);
+    //new targets
+    for(var i = 0; i<ballCount; i++){
+      balls[i] = new Ball();
+    }
+  };
+  this.promp = function(arg){
+    if(arg===0){
+      this.showPrompt = true;
+      this.msg = "You lost.  \nYou can hit <SPACE> to try again."
+    } else if (arg === 1){
+      this.showPrompt = true;
+      this.msg = "You won! \nYou can hit <SPACE> to play again."
+    }
   };
 }
 
