@@ -4,23 +4,43 @@
   <title>...move to...</title>
   <!-- this line removes any default padding and style. you might only need one of these values set. -->
   <style> body {padding: 0; margin: 0;} </style>
+  <link rel="stylesheet" href="svgFreehand/styles/style.css">
 </head>
 
 
 <body>
+  <header>
 
-<svg width="300" height="300" id="svgPort"
-  xmlns="http://www.w3.org/2000/svg"
-  xmlns:xlink="http://www.w3.org/1999/xlink">
+  </header>
+  <main>
+    <svg width="300" height="300" id="svgPort"
+      xmlns="http://www.w3.org/2000/svg"
+      xmlns:xlink="http://www.w3.org/1999/xlink" style="background: cyan">
+      <!-- This is the element before translation and rotation are applied -->
+      <rect x="50" y="50" height="100" width="100" style="stroke:#000; fill: #0086B2" fill-opacity=0.2 stroke-opacity=0.2></rect>
+      <!-- Now we add a text element and apply rotate and translate to both -->
+      <rect x="50" y="50" height="100" width="100" style="stroke:#000; fill: #0086B2" transform="translate(30) rotate(45 50 50)"></rect>
+      <polyline id ='currentDrawing' points='0,0 0,0' style='stroke:black; stroke-width:1; fill: none' />
+    </svg>
+  <main>
+  <div id="sidebar" >
+    <div id="brushes">
+    </div>
+    <div id="brushMeta">
+    </div>
+    <div id="palette">
+    </div>
+    <div id="groups">
+    </div>
+    <div id="elementTree">
+      <ul id="elementList">
+      </ul>
+    </div>
+  </div>
+  <footer>
 
-  <!-- This is the element before translation and rotation are applied -->
-  <rect x="50" y="50" height="100" width="100" style="stroke:#000; fill: #0086B2" fill-opacity=0.2 stroke-opacity=0.2></rect>
-
-  <!-- Now we add a text element and apply rotate and translate to both -->
-  <rect x="50" y="50" height="100" width="100" style="stroke:#000; fill: #0086B2" transform="translate(30) rotate(45 50 50)"></rect>
-  <polyline id ='currentDrawing' points='0,300 300,300' style='stroke:black; stroke-width:1; fill: none' />
-
-</svg>
-    <script language="javascript" type="text/javascript" src="js/svgFree.js"></script>
+  </footer>
+  <script language="javascript" type="text/javascript" src="svgFreehand/svgFree.js"></script>
+  <script language="javascript" type="text/javascript" src="svgFreehand/elementTree.js"></script>
 </body>
 </html>
