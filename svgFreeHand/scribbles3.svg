@@ -1,0 +1,6 @@
+
+            <svg width="300" height="300" id="svgPort" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" style="background: cyan">
+              <polyline id="currentDrawing" points="0,0 0,0" style="stroke:black; stroke-width:1; fill: none"></polyline>
+            <polyline id="element0" points=" 70,44 97,81 138,134 173,182 192,207 203,225 212,235 216,237" style="stroke:black; stroke-width:1; fill: none"></polyline><polyline id="element1" points=" 46,231 56,220 76,196 96,162 127,107 154,63 170,40 181,28 183,27" style="stroke:black; stroke-width:1; fill: none"></polyline><polyline id="element2" points=" 67,125 202,124 229,124 234,125 236,127" style="stroke:black; stroke-width:1; fill: none"></polyline><polyline id="element3" points=" 204,70 204,86 204,115 204,150 200,188 190,220 185,235 181,242 173,246 152,251 138,251 123,247 113,240 103,230 99,220 95,205 92,189 88,175 88,165 90,158 100,155 134,162 153,170 157,173 161,182 163,190 164,199 165,205 170,211 185,214 201,210 209,203 217,191 219,183 220,176 220,170 218,164 212,158 202,155 190,154 182,160 180,169 180,176 193,178 199,178" style="stroke:black; stroke-width:1; fill: none"></polyline></svg>
+          <main>
+        </main>
